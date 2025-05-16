@@ -1,0 +1,48 @@
+{
+  "@@locale": "en",
+  "login": "Login",
+  "userId": "User ID",
+  "pin": "PIN",
+  "loginTitle": "Login to your Account",
+  "invalidLogin": "Invalid ID or PIN",
+
+
+  "schoolName": "HILLTONE INTERNATIONAL ISLAMIC SCHOOL & COLLEGE",
+  "homework": "Homework",
+  "attendance": "Attendance",
+  "classRoutine": "Routine",
+  "syllabus": "Syllabus",
+  "result": "Result",
+  "payment": "Payment",
+  "home": "Home",
+  "notices": "Notices",
+  "profile": "Profile",
+
+
+  "settings": "Settings",
+  "changePin": "Change PIN",
+  "changeLanguage": "Change Language:",
+  "cancel": "Cancel",
+  "save": "Save",
+  "logout": "Logout",
+  "holdToLogout": "Hold the power button to log out",
+
+  "id": "ID",
+  "designation": "Designation",
+  "cclass": "Class",
+  "phone": "Phone",
+  "email": "Email",
+  "gender": "Gender",
+  "birthCert": "Birth Certificate",
+  "nid": "NID",
+  "bloodGroup": "Blood Group",
+  "currentAddress": "Current Address",
+  "permanentAddress": "Permanent Address",
+  "fatherName": "Father Name",
+  "fatherPhone": "Father Phone",
+  "motherName": "Mother Name",
+  "motherPhone": "Mother Phone",
+
+  "hwAndCw": "Homework & Classwork",
+  "noHomeWork": "No homework found on this date."
+}

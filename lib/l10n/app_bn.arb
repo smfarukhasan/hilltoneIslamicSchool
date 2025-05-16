@@ -1,0 +1,50 @@
+{
+  "@@locale": "bn",
+  "login": "লগইন",
+  "userId": "আইডি",
+  "pin": "পিন",
+  "loginTitle": "আপনার অ্যাকাউন্টে লগইন করুন",
+  "invalidLogin": "দয়া করে সঠিক আইডি এবং পিন দিন",
+
+
+  "schoolName": "হিলটন ইন্টারন্যাশনাল ইসলামিক স্কুল & কলেজ",
+  "homework": "হোম ওয়ার্ক",
+  "attendance": "উপস্থিতি",
+  "classRoutine": "ক্লাস রুটিন",
+  "syllabus": "সিলেবাস",
+  "result": "রেজাল্ট",
+  "payment": "পেমেন্ট",
+  "home": "হোম",
+  "notices": "নোটিশ",
+  "profile": "প্রফাইল",
+
+
+  "settings": "সেটিংস",
+  "changePin": "পিন পরিবর্তন",
+  "changeLanguage": "ভাষা পরিবর্তনঃ",
+  "cancel": "বাতিল",
+  "save": "সেভ করুন",
+  "logout": "লগআউট",
+  "holdToLogout": "লগআউট করতে পাওয়ার বোতামে চাপ দিয়ে রাখুন",
+
+  "id": "আইডি",
+  "designation": "পদমর্যাদা",
+  "cclass": "ক্লাস",
+  "phone": "ফোন নম্বর",
+  "email": "ইমেইল",
+  "gender": "লিঙ্গ",
+  "birthCert": "জন্ম সনদ",
+  "nid": "জাতীয় পরিচয়পত্র",
+  "bloodGroup": "রক্তের গ্রুপ",
+  "currentAddress": "বর্তমান ঠিকানা",
+  "permanentAddress": "স্থায়ী ঠিকানা",
+  "fatherName": "পিতার নাম",
+  "fatherPhone": "পিতার ফোন নম্বর",
+  "motherName": "মাতার নাম",
+  "motherPhone": "মাতার ফোন নম্বর",
+
+
+  "hwAndCw": "হোমওয়ার্ক ও ক্লাসওয়ার্ক",
+  "noHomeWork": "হোমওয়ার্ক পাওয়া যায়নি।"
+}
+

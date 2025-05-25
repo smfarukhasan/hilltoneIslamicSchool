@@ -1,3 +1,5 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -43,6 +45,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get payment => 'পেমেন্ট';
 
   @override
+  String get leave => 'ছুটির আবেদন';
+
+  @override
   String get home => 'হোম';
 
   @override
@@ -50,6 +55,9 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get profile => 'প্রফাইল';
+
+  @override
+  String get report => 'রিপোর্ট';
 
   @override
   String get settings => 'সেটিংস';
@@ -80,6 +88,9 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get cclass => 'ক্লাস';
+
+  @override
+  String get version => 'ভার্সন';
 
   @override
   String get phone => 'ফোন নম্বর';
@@ -122,4 +133,94 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get noHomeWork => 'হোমওয়ার্ক পাওয়া যায়নি।';
+
+  @override
+  String get date => '📅 তারিখ';
+
+  @override
+  String get checkIn => '⏰ চেক ইন';
+
+  @override
+  String get checkOut => '⏳ চেক আউট';
+
+  @override
+  String get time => 'সময়';
+
+  @override
+  String get subject => 'বিষয়';
+
+  @override
+  String get noRoutine => 'এই বারের জন্য কোনো রুটিন নেই';
+
+  @override
+  String get saturday => 'শনিবার';
+
+  @override
+  String get sunday => 'রবিবার';
+
+  @override
+  String get monday => 'সোমবার';
+
+  @override
+  String get tuesday => 'মঙ্গলবার';
+
+  @override
+  String get wednesday => 'বুধবার';
+
+  @override
+  String get thursday => 'বৃহস্পতিবার';
+
+  @override
+  String get newLeaveRequest => 'নতুন ছুটির আবেদন';
+
+  @override
+  String get fromDate => 'শুরুর তারিখ';
+
+  @override
+  String get toDate => 'শেষ তারিখ';
+
+  @override
+  String get name => 'নাম';
+
+  @override
+  String get enterName => 'দয়া করে নাম লিখুন';
+
+  @override
+  String get leaveType => 'ছুটির ধরন';
+
+  @override
+  String get enterLeaveType => 'ছুটির ধরন লিখুন';
+
+  @override
+  String get description => 'বর্ণনা';
+
+  @override
+  String get enterDescription => 'বর্ণনা লিখুন';
+
+  @override
+  String get submit => 'জমা দিন';
+
+  @override
+  String get noLeaveApplications => 'এখনো কোনো ছুটির আবেদন নেই';
+
+  @override
+  String get reportTitle => 'রিপোর্ট শিরোনাম';
+
+  @override
+  String get reportSubject => 'রিপোর্ট বিষয়';
+
+  @override
+  String get reportDetails => 'বিস্তারিত রিপোর্ট';
+
+  @override
+  String get titleRequired => 'শিরোনাম লিখুন';
+
+  @override
+  String get subjectRequired => 'বিষয় লিখুন';
+
+  @override
+  String get detailsRequired => 'বিস্তারিত লিখুন';
+
+  @override
+  String get reportSuccess => 'রিপোর্ট সফলভাবে জমা হয়েছে';
 }

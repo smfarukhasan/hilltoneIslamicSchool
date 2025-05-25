@@ -1,9 +1,4 @@
-//এখানে নোটিশ যোগ করা ও এডিট করা ডিলিট করা শুধু সুপার অ্যাডমিন পাড়বে। টিচারও স্টুডেন্ট পেজের মতো শুধু দেখতে পাড়বে।
-// টিচারের ভিউ করার ইউআই কমেন্টআউট করা আছে।
-
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import '../../l10n/app_localizations.dart';
 import 'bottom_nav_t.dart';
@@ -55,13 +50,6 @@ class _NoticePageTState extends State<NoticePageT> {
         title: Text(loc.notices, style: const TextStyle(color: Colors.white)),
         centerTitle: true,
         backgroundColor: Colors.green,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add, color: Colors.white),
-            tooltip: 'নতুন নোটিশ',
-            onPressed: () => _showAddNoticeDialog(context),
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(12),
@@ -109,118 +97,6 @@ class _NoticePageTState extends State<NoticePageT> {
     );
   }
 
-  void _showAddNoticeDialog(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
-    final TextEditingController titleController = TextEditingController();
-    final TextEditingController detailsController = TextEditingController();
-    File? selectedImage;
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (context, setStateSB) => AlertDialog(
-            title: Text(loc.notices),
-            content: SingleChildScrollView(
-              child: Column(
-                children: [
-                  if (selectedImage != null)
-                    Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.file(
-                            selectedImage!,
-                            height: 150,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Positioned(
-                          right: 8,
-                          top: 8,
-                          child: InkWell(
-                            onTap: () {
-                              setStateSB(() {
-                                selectedImage = null;
-                              });
-                            },
-                            child: const CircleAvatar(
-                              backgroundColor: Colors.black54,
-                              child: Icon(Icons.close, color: Colors.white, size: 20),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  else
-                    ElevatedButton.icon(
-                      onPressed: () async {
-                        final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
-                        if (picked != null) {
-                          setStateSB(() {
-                            selectedImage = File(picked.path);
-                          });
-                        }
-                      },
-                      icon: const Icon(Icons.image),
-                      label: const Text("Upload Image"),
-                      style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                    ),
-                  const SizedBox(height: 12),
-                  TextField(
-                    controller: titleController,
-                    decoration: const InputDecoration(labelText: 'Title', border: OutlineInputBorder()),
-                  ),
-                  const SizedBox(height: 12),
-                  TextField(
-                    controller: detailsController,
-                    maxLines: 4,
-                    decoration: const InputDecoration(labelText: 'Description', border: OutlineInputBorder()),
-                  ),
-                ],
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(loc.cancel),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  final title = titleController.text.trim();
-                  final details = detailsController.text.trim();
-                  if (title.isNotEmpty && details.isNotEmpty) {
-                    setState(() {
-                      _notices.insert(
-                        0,
-                        NoticeT(
-                          imageUrl: selectedImage?.path,
-                          title: title,
-                          details: details,
-                          dateTime: DateTime.now(),
-                        ),
-                      );
-                    });
-                    Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('নোটিশ সংরক্ষণ করা হয়েছে')),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('সব ফিল্ড পূরণ করুন')),
-                    );
-                  }
-                },
-                child: Text(loc.save),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
   Widget _buildNoticeImage(double width, String? imageUrl) {
     final imgSize = width * 0.25;
 
@@ -248,100 +124,8 @@ class _NoticePageTState extends State<NoticePageT> {
     );
   }
 
-//eita sudhu teacher er jonno r nicer gula supar admin er jonno
-  // void _showNoticeDialog(BuildContext context, NoticeT notice) {
-  //   final loc = AppLocalizations.of(context)!;
-  //   showDialog(
-  //     context: context,
-  //     builder: (_) => Dialog(
-  //       insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-  //       child: SingleChildScrollView(
-  //         padding: const EdgeInsets.all(16),
-  //         child: Column(
-  //           mainAxisSize: MainAxisSize.min, // height wrap
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             // ইমেজ দেখানো (fallback সহ)
-  //             if (notice.imageUrl != null && notice.imageUrl!.isNotEmpty)
-  //               ClipRRect(
-  //                 borderRadius: BorderRadius.circular(12),
-  //                 child: Image.asset(
-  //                   notice.imageUrl!,
-  //                   width: double.infinity,
-  //                   fit: BoxFit.cover,
-  //                 ),
-  //               )
-  //             else
-  //               ClipRRect(
-  //                 borderRadius: BorderRadius.circular(12),
-  //                 child: Image.asset(
-  //                   'assets/logo.png',
-  //                   width: double.infinity,
-  //                   fit: BoxFit.cover,
-  //                 ),
-  //               ),
-  //
-  //             const SizedBox(height: 12),
-  //
-  //             // শিরোনাম
-  //             Text(
-  //               notice.title,
-  //               style: const TextStyle(
-  //                 fontSize: 20,
-  //                 fontWeight: FontWeight.bold,
-  //               ),
-  //             ),
-  //
-  //             const SizedBox(height: 8),
-  //
-  //             // তারিখ ও সময়
-  //             Text(
-  //               "${_formatDate(notice.dateTime)} | ${_formatTime(notice.dateTime)}",
-  //               style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
-  //             ),
-  //
-  //             const Divider(height: 24),
-  //
-  //             // বিস্তারিত
-  //             Text(
-  //               notice.details,
-  //               style: const TextStyle(fontSize: 16, height: 1.5),
-  //             ),
-  //
-  //             const SizedBox(height: 24),
-  //
-  //             // বন্ধ করুন বাটন
-  //             SizedBox(
-  //               width: double.infinity,
-  //               child: ElevatedButton(
-  //                 style: ElevatedButton.styleFrom(
-  //                   backgroundColor: Colors.green,
-  //                   padding: const EdgeInsets.symmetric(vertical: 14),
-  //                   shape: const RoundedRectangleBorder(
-  //                     borderRadius: BorderRadius.only(
-  //                       bottomLeft: Radius.circular(14),
-  //                       bottomRight: Radius.circular(14),
-  //                     ),
-  //                   ),
-  //                 ),
-  //                 onPressed: () => Navigator.pop(context),
-  //                 child: Text(
-  //                   loc.cancel,
-  //                   style: const TextStyle(fontSize: 16, color: Colors.white),
-  //                 ),
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
   void _showNoticeDialog(BuildContext context, NoticeT notice) {
     final loc = AppLocalizations.of(context)!;
-
     showDialog(
       context: context,
       builder: (_) => Dialog(
@@ -402,42 +186,26 @@ class _NoticePageTState extends State<NoticePageT> {
 
               const SizedBox(height: 24),
 
-              // একসাথে Edit, Delete, Close
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // 🖊️ Edit
-                  TextButton.icon(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      _showEditNoticeDialog(context, notice);
-                    },
-                    icon: const Icon(Icons.edit, color: Colors.blue),
-                    label: const Text("এডিট", style: TextStyle(color: Colors.blue)),
-                  ),
-
-                  // ❌ Delete
-                  TextButton.icon(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      // এখানে delete logic বসাও
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("নোটিশ মুছে ফেলা হয়েছে")),
-                      );
-                    },
-                    icon: const Icon(Icons.delete, color: Colors.red),
-                    label: const Text("ডিলিট", style: TextStyle(color: Colors.red)),
-                  ),
-
-                  // ✅ Close
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
+              // বন্ধ করুন বাটন
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(14),
+                        bottomRight: Radius.circular(14),
+                      ),
                     ),
-                    onPressed: () => Navigator.pop(context),
-                    child: Text(loc.cancel, style: const TextStyle(color: Colors.white)),
                   ),
-                ],
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(
+                    loc.cancel,
+                    style: const TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                ),
               ),
             ],
           ),
@@ -446,52 +214,6 @@ class _NoticePageTState extends State<NoticePageT> {
     );
   }
 
-  void _showEditNoticeDialog(BuildContext context, NoticeT notice) {
-    final loc = AppLocalizations.of(context)!;
-    final TextEditingController titleController = TextEditingController(text: notice.title);
-    final TextEditingController detailsController = TextEditingController(text: notice.details);
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text("Edit Notice"),
-          content: SingleChildScrollView(
-            child: Column(
-              children: [
-                TextField(
-                  controller: titleController,
-                  decoration: const InputDecoration(labelText: 'Title', border: OutlineInputBorder()),
-                ),
-                const SizedBox(height: 12),
-                TextField(
-                  controller: detailsController,
-                  maxLines: 4,
-                  decoration: const InputDecoration(labelText: 'Description', border: OutlineInputBorder()),
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text(loc.cancel),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // এখানে update logic বসাও
-                Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('নোটিশ আপডেট করা হয়েছে')),
-                );
-              },
-              child: Text(loc.save),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   static String _formatDate(DateTime dt) {
     return "${dt.day.toString().padLeft(2, '0')}-${dt.month.toString().padLeft(2, '0')}-${dt.year}";

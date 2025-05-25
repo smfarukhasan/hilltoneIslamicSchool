@@ -170,7 +170,7 @@ class _HomeworkListTState extends State<HomeworkListT> {
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.15),
+                  color: Colors.black.withAlpha((0.15 * 255).toInt()),
                   spreadRadius: 1,
                   blurRadius: 6,
                   offset: const Offset(0, 3),

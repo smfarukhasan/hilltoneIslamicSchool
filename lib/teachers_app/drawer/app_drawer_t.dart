@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
 import '../../login/logout_page.dart';
 import '../../students_app/drawer/drawer_icon_title.dart';
+import '../pages_t/syllabus_page_t.dart';
 import 'drawer_header_t.dart';
 import 'settings_dialog_t.dart';
 
@@ -27,9 +28,14 @@ class AppDrawerT extends StatelessWidget {
             ),
 
             DrawerTitle(
-              icon: Icons.announcement,
-              title: loc.notices,
-              onTap: () => Navigator.pop(context),
+              icon: Icons.picture_as_pdf,
+              title: loc.syllabus,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SyllabusPageT()),
+                );
+              },
             ),
 
             DrawerTitle(

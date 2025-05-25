@@ -119,11 +119,11 @@ class _HomeworkPageTState extends State<HomeworkPageT> with TickerProviderStateM
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Colors.green.withOpacity(0.1),
+                color: Colors.green.withAlpha((0.1 * 255).toInt()),
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.green.withOpacity(0.3),
+                    color: Colors.green.withAlpha((0.3 * 255).toInt()),
                     blurRadius: 6,
                     offset: const Offset(0, 3),
                   ),

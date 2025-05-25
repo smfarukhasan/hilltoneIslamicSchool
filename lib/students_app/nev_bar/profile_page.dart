@@ -10,19 +10,22 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final List<String> nonEditableFields = ['name', 'id', 'cclass'];
+  final List<String> nonEditableFields = ['name', 'id', 'cclass', 'version'];
 
   Map<String, String> infoMap = {
     "name": "মোঃ কামাল হোসেন",
     "id": "STU-2023-101",
     "cclass": "দশম",
+    "version": "বাংলা",
     "phone": "01XXXXXXXXX",
     "email": "kamal.hossain@example.com",
     "gender": "পুরুষ",
     "birth_cert": "2005-01-15",
     "blood_group": "O+",
-    "current_address": "গ্রাম: উত্তর পাড়া,\nডাকঘর: ---,\nউপজেলা: ---,\nজেলা: ---",
-    "permanent_address": "গ্রাম: দক্ষিণ পাড়া,\nডাকঘর: ---,\nউপজেলা: ---,\nজেলা: ---",
+    "current_address":
+        "গ্রাম: উত্তর পাড়া,\nডাকঘর: ---,\nউপজেলা: ---,\nজেলা: ---",
+    "permanent_address":
+        "গ্রাম: দক্ষিণ পাড়া,\nডাকঘর: ---,\nউপজেলা: ---,\nজেলা: ---",
     "father_name": "আলী হোসেন",
     "father_phone": "01YYYYYYYYY",
     "mother_name": "ফাতেমা বেগম",
@@ -43,21 +46,38 @@ class _ProfilePageState extends State<ProfilePage> {
 
   String getLabel(String key, AppLocalizations loc) {
     switch (key) {
-      case 'name': return loc.home;
-      case 'id': return loc.id;
-      case 'cclass': return loc.cclass;
-      case 'phone': return loc.phone;
-      case 'email': return loc.email;
-      case 'gender': return loc.gender;
-      case 'birth_cert': return loc.birthCert;
-      case 'blood_group': return loc.bloodGroup;
-      case 'current_address': return loc.currentAddress;
-      case 'permanent_address': return loc.permanentAddress;
-      case 'father_name': return loc.fatherName;
-      case 'father_phone': return loc.fatherPhone;
-      case 'mother_name': return loc.motherName;
-      case 'mother_phone': return loc.motherPhone;
-      default: return key;
+      case 'name':
+        return loc.home;
+      case 'id':
+        return loc.id;
+      case 'cclass':
+        return loc.cclass;
+      case 'version':
+        return loc.version;
+      case 'phone':
+        return loc.phone;
+      case 'email':
+        return loc.email;
+      case 'gender':
+        return loc.gender;
+      case 'birth_cert':
+        return loc.birthCert;
+      case 'blood_group':
+        return loc.bloodGroup;
+      case 'current_address':
+        return loc.currentAddress;
+      case 'permanent_address':
+        return loc.permanentAddress;
+      case 'father_name':
+        return loc.fatherName;
+      case 'father_phone':
+        return loc.fatherPhone;
+      case 'mother_name':
+        return loc.motherName;
+      case 'mother_phone':
+        return loc.motherPhone;
+      default:
+        return key;
     }
   }
 
@@ -86,13 +106,16 @@ class _ProfilePageState extends State<ProfilePage> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.teal.shade400,
-                boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 8)],
+                boxShadow: const [
+                  BoxShadow(color: Colors.black12, blurRadius: 8)
+                ],
               ),
               clipBehavior: Clip.antiAlias,
               child: Image.network(
                 'https://via.placeholder.com/150',
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => Icon(Icons.person, size: avatarSize * 0.6, color: Colors.white),
+                errorBuilder: (_, __, ___) => Icon(Icons.person,
+                    size: avatarSize * 0.6, color: Colors.white),
               ),
             ),
             // নাম
@@ -103,9 +126,67 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(height: 16),
 
             // তথ্য তালিকা
-            ...infoMap.entries.where((entry) => entry.key != 'name').map((entry) {
+            ...infoMap.entries
+                .where((entry) => entry.key != 'name' && entry.key != 'version')
+                .map((entry) {
               final key = entry.key;
               final value = entry.value;
+
+              // বিশেষ কেস: cclass ও version একই রোতে দেখানো
+              if (key == 'cclass') {
+                final versionValue = infoMap['version']!;
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: const [
+                      BoxShadow(color: Colors.black12, blurRadius: 4)
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      // 🔹 Class Field
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.black87),
+                            children: [
+                              TextSpan(
+                                text: '${getLabel('cclass', loc)}: ',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              TextSpan(text: value),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      // 🔸 Version Field
+                      Expanded(
+                        child: RichText(
+                          text: TextSpan(
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.black87),
+                            children: [
+                              TextSpan(
+                                text: '${getLabel('version', loc)}: ',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              TextSpan(text: versionValue),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+
               final editing = isEditing[key] ?? false;
               final editable = !nonEditableFields.contains(key);
               final label = getLabel(key, loc);
@@ -123,7 +204,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 4)],
+                    boxShadow: const [
+                      BoxShadow(color: Colors.black12, blurRadius: 4)
+                    ],
                   ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,34 +214,38 @@ class _ProfilePageState extends State<ProfilePage> {
                       Expanded(
                         child: editing
                             ? TextField(
-                          controller: controllers[key],
-                          maxLines: null,
-                          autofocus: true,
-                          decoration: InputDecoration(
-                            labelText: label,
-                            labelStyle: const TextStyle(fontWeight: FontWeight.bold),
-                            border: InputBorder.none,
-                          ),
-                        )
+                                controller: controllers[key],
+                                maxLines: null,
+                                autofocus: true,
+                                decoration: InputDecoration(
+                                  labelText: label,
+                                  labelStyle: const TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                  border: InputBorder.none,
+                                ),
+                              )
                             : RichText(
-                          text: TextSpan(
-                            style: const TextStyle(fontSize: 16, color: Colors.black87),
-                            children: [
-                              TextSpan(
-                                text: '$label: ',
-                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                text: TextSpan(
+                                  style: const TextStyle(
+                                      fontSize: 16, color: Colors.black87),
+                                  children: [
+                                    TextSpan(
+                                      text: '$label: ',
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    TextSpan(text: value),
+                                  ],
+                                ),
                               ),
-                              TextSpan(text: value),
-                            ],
-                          ),
-                        ),
                       ),
                       if (editable && editing)
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             IconButton(
-                              icon: const Icon(Icons.check_circle, color: Colors.green),
+                              icon: const Icon(Icons.check_circle,
+                                  color: Colors.green),
                               onPressed: () {
                                 setState(() {
                                   infoMap[key] = controllers[key]!.text;

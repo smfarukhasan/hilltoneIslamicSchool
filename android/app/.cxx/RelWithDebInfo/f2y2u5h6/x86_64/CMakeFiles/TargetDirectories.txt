@@ -1,0 +1,2 @@
+H:/Flutter Projects/hilltone_school/android/app/.cxx/RelWithDebInfo/f2y2u5h6/x86_64/CMakeFiles/edit_cache.dir
+H:/Flutter Projects/hilltone_school/android/app/.cxx/RelWithDebInfo/f2y2u5h6/x86_64/CMakeFiles/rebuild_cache.dir

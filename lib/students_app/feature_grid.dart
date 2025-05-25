@@ -15,33 +15,41 @@ class FeatureGrid extends StatelessWidget {
     final loc = AppLocalizations.of(context)!;
 
     final items = [
-      _GridItem(loc.homework, Icons.sticky_note_2_outlined, () => _navigate(context, const HomeworkPage())),
+      _GridItem(loc.homework, Icons.menu_book, () => _navigate(context, const HomeworkPage())),
       _GridItem(loc.attendance, Icons.calendar_month_outlined, () => _navigate(context, const AttendancePage())),
       _GridItem(loc.classRoutine, Icons.watch_later_outlined, () => _navigate(context, const RoutinePage())),
-      _GridItem(loc.syllabus, Icons.menu_book, () => _navigate(context, const SyllabusPage())),
+      _GridItem(loc.syllabus, Icons.picture_as_pdf_outlined, () => _navigate(context, const SyllabusPage())),
       _GridItem(loc.result, Icons.bar_chart, () => _navigate(context, const ResultPage())),
       _GridItem(loc.payment, Icons.payment, () => _navigate(context, const PaymentPage())),
     ];
 
-    return Card(
-      elevation: 0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      margin: const EdgeInsets.symmetric(horizontal: 1, vertical: 1),
-      child: Padding(
-        padding: const EdgeInsets.all(1),
-        child: GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            childAspectRatio: 0.7,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        double width = constraints.maxWidth;
+        double spacing = 8;
+        double aspectRatio = width > 400 ? 0.85 : 0.9;
+
+        return Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          margin: const EdgeInsets.all(4),
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: spacing,
+                mainAxisSpacing: spacing / 2,
+                childAspectRatio: aspectRatio,
+              ),
+              itemCount: items.length,
+              itemBuilder: (context, index) => _buildTile(context, items[index]),
+            ),
           ),
-          itemCount: items.length,
-          itemBuilder: (context, index) => _buildTile(context, items[index]),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -53,16 +61,16 @@ class FeatureGrid extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundColor: Colors.teal[400],
-            radius: 28,
-            child: Icon(item.icon, size: 28, color: Colors.white),
+            radius: 26,
+            child: Icon(item.icon, size: 26, color: Colors.white),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 6),
           Text(
             item.title,
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontWeight: FontWeight.w600,
-              fontSize: 14,
+              fontSize: 13,
             ),
           ),
         ],

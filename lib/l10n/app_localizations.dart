@@ -167,6 +167,12 @@ abstract class AppLocalizations {
   /// **'Payment'**
   String get payment;
 
+  /// No description provided for @leave.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Apply'**
+  String get leave;
+
   /// No description provided for @home.
   ///
   /// In en, this message translates to:
@@ -184,6 +190,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @report.
+  ///
+  /// In en, this message translates to:
+  /// **'Report'**
+  String get report;
 
   /// No description provided for @settings.
   ///
@@ -244,6 +256,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Class'**
   String get cclass;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get version;
 
   /// No description provided for @phone.
   ///
@@ -328,6 +346,186 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No homework found on this date.'**
   String get noHomeWork;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'📅 Date'**
+  String get date;
+
+  /// No description provided for @checkIn.
+  ///
+  /// In en, this message translates to:
+  /// **'⏰ Check In'**
+  String get checkIn;
+
+  /// No description provided for @checkOut.
+  ///
+  /// In en, this message translates to:
+  /// **'⏳ Check Out'**
+  String get checkOut;
+
+  /// No description provided for @time.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get time;
+
+  /// No description provided for @subject.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get subject;
+
+  /// No description provided for @noRoutine.
+  ///
+  /// In en, this message translates to:
+  /// **'No routine available for this day'**
+  String get noRoutine;
+
+  /// No description provided for @saturday.
+  ///
+  /// In en, this message translates to:
+  /// **'Saturday'**
+  String get saturday;
+
+  /// No description provided for @sunday.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunday'**
+  String get sunday;
+
+  /// No description provided for @monday.
+  ///
+  /// In en, this message translates to:
+  /// **'Monday'**
+  String get monday;
+
+  /// No description provided for @tuesday.
+  ///
+  /// In en, this message translates to:
+  /// **'Tuesday'**
+  String get tuesday;
+
+  /// No description provided for @wednesday.
+  ///
+  /// In en, this message translates to:
+  /// **'Wednesday'**
+  String get wednesday;
+
+  /// No description provided for @thursday.
+  ///
+  /// In en, this message translates to:
+  /// **'Thursday'**
+  String get thursday;
+
+  /// No description provided for @newLeaveRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'New Leave Request'**
+  String get newLeaveRequest;
+
+  /// No description provided for @fromDate.
+  ///
+  /// In en, this message translates to:
+  /// **'From Date'**
+  String get fromDate;
+
+  /// No description provided for @toDate.
+  ///
+  /// In en, this message translates to:
+  /// **'To Date'**
+  String get toDate;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @enterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter name'**
+  String get enterName;
+
+  /// No description provided for @leaveType.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Type'**
+  String get leaveType;
+
+  /// No description provided for @enterLeaveType.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter leave type'**
+  String get enterLeaveType;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @enterDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter description'**
+  String get enterDescription;
+
+  /// No description provided for @submit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submit;
+
+  /// No description provided for @noLeaveApplications.
+  ///
+  /// In en, this message translates to:
+  /// **'No leave applications yet'**
+  String get noLeaveApplications;
+
+  /// No description provided for @reportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Report Title'**
+  String get reportTitle;
+
+  /// No description provided for @reportSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'Report Subject'**
+  String get reportSubject;
+
+  /// No description provided for @reportDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Report Details'**
+  String get reportDetails;
+
+  /// No description provided for @titleRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the title'**
+  String get titleRequired;
+
+  /// No description provided for @subjectRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the subject'**
+  String get subjectRequired;
+
+  /// No description provided for @detailsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the details'**
+  String get detailsRequired;
+
+  /// No description provided for @reportSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Report submitted successfully'**
+  String get reportSuccess;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

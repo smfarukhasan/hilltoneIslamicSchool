@@ -14,9 +14,11 @@
   "syllabus": "Syllabus",
   "result": "Result",
   "payment": "Payment",
+  "leave": "Leave Apply",
   "home": "Home",
   "notices": "Notices",
   "profile": "Profile",
+  "report": "Report",
 
 
   "settings": "Settings",
@@ -30,6 +32,7 @@
   "id": "ID",
   "designation": "Designation",
   "cclass": "Class",
+  "version": "Version",
   "phone": "Phone",
   "email": "Email",
   "gender": "Gender",
@@ -44,5 +47,40 @@
   "motherPhone": "Mother Phone",
 
   "hwAndCw": "Homework & Classwork",
-  "noHomeWork": "No homework found on this date."
+  "noHomeWork": "No homework found on this date.",
+
+  "date": "📅 Date",
+  "checkIn": "⏰ Check In",
+  "checkOut": "⏳ Check Out",
+
+  "time": "Time",
+  "subject": "Subject",
+  "noRoutine": "No routine available for this day",
+  "saturday": "Saturday",
+  "sunday": "Sunday",
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+
+
+  "newLeaveRequest": "New Leave Request",
+  "fromDate": "From Date",
+  "toDate": "To Date",
+  "name": "Name",
+  "enterName": "Please enter name",
+  "leaveType": "Leave Type",
+  "enterLeaveType": "Please enter leave type",
+  "description": "Description",
+  "enterDescription": "Please enter description",
+  "submit": "Submit",
+  "noLeaveApplications": "No leave applications yet",
+
+  "reportTitle": "Report Title",
+  "reportSubject": "Report Subject",
+  "reportDetails": "Report Details",
+  "titleRequired": "Please enter the title",
+  "subjectRequired": "Please enter the subject",
+  "detailsRequired": "Please enter the details",
+  "reportSuccess": "Report submitted successfully"
 }

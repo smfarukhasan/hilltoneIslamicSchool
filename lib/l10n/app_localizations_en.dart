@@ -1,3 +1,5 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -43,6 +45,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get payment => 'Payment';
 
   @override
+  String get leave => 'Leave Apply';
+
+  @override
   String get home => 'Home';
 
   @override
@@ -50,6 +55,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String get report => 'Report';
 
   @override
   String get settings => 'Settings';
@@ -80,6 +88,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cclass => 'Class';
+
+  @override
+  String get version => 'Version';
 
   @override
   String get phone => 'Phone';
@@ -122,4 +133,94 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noHomeWork => 'No homework found on this date.';
+
+  @override
+  String get date => '📅 Date';
+
+  @override
+  String get checkIn => '⏰ Check In';
+
+  @override
+  String get checkOut => '⏳ Check Out';
+
+  @override
+  String get time => 'Time';
+
+  @override
+  String get subject => 'Subject';
+
+  @override
+  String get noRoutine => 'No routine available for this day';
+
+  @override
+  String get saturday => 'Saturday';
+
+  @override
+  String get sunday => 'Sunday';
+
+  @override
+  String get monday => 'Monday';
+
+  @override
+  String get tuesday => 'Tuesday';
+
+  @override
+  String get wednesday => 'Wednesday';
+
+  @override
+  String get thursday => 'Thursday';
+
+  @override
+  String get newLeaveRequest => 'New Leave Request';
+
+  @override
+  String get fromDate => 'From Date';
+
+  @override
+  String get toDate => 'To Date';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get enterName => 'Please enter name';
+
+  @override
+  String get leaveType => 'Leave Type';
+
+  @override
+  String get enterLeaveType => 'Please enter leave type';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get enterDescription => 'Please enter description';
+
+  @override
+  String get submit => 'Submit';
+
+  @override
+  String get noLeaveApplications => 'No leave applications yet';
+
+  @override
+  String get reportTitle => 'Report Title';
+
+  @override
+  String get reportSubject => 'Report Subject';
+
+  @override
+  String get reportDetails => 'Report Details';
+
+  @override
+  String get titleRequired => 'Please enter the title';
+
+  @override
+  String get subjectRequired => 'Please enter the subject';
+
+  @override
+  String get detailsRequired => 'Please enter the details';
+
+  @override
+  String get reportSuccess => 'Report submitted successfully';
 }

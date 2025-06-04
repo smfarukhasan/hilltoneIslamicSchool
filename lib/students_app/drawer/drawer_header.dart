@@ -52,7 +52,7 @@ class AppDrawerHeader extends StatelessWidget {
 
           // 🔹 নাম
           const Text(
-            'John Doe',
+            'Student Name',
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,

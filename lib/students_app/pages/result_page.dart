@@ -14,12 +14,13 @@ class _ResultPageState extends State<ResultPage> {
 
   final List<String> exams = ['Mid Term', 'Final', 'Class Test'];
   final List<Map<String, dynamic>> results = [
-    {'subject': 'গণিত', 'marks': 80, 'grade': 'A'},
-    {'subject': 'বাংলা', 'marks': 75, 'grade': 'A-'},
-    {'subject': 'ইংরেজি', 'marks': 65, 'grade': 'B+'},
+    {'subject': 'Math', 'subject_bn': 'গণিত', 'marks': 80, 'grade': 'A'},
+    {'subject': 'Bangla', 'subject_bn': 'বাংলা', 'marks': 75, 'grade': 'A-'},
+    {'subject': 'English', 'subject_bn': 'ইংরেজি', 'marks': 65, 'grade': 'B+'},
   ];
 
-  double get averageMarks => results.map((e) => e['marks'] as int).reduce((a, b) => a + b) / results.length;
+  double get averageMarks =>
+      results.map((e) => e['marks'] as int).reduce((a, b) => a + b) / results.length;
 
   String get averageGrade {
     final grades = ['A+', 'A', 'A-', 'B+', 'B', 'C', 'D', 'F'];
@@ -34,7 +35,8 @@ class _ResultPageState extends State<ResultPage> {
       'F': 0.0,
     };
 
-    final totalPoints = results.map((e) => gradePoints[e['grade']] ?? 0.0).reduce((a, b) => a + b);
+    final totalPoints =
+    results.map((e) => gradePoints[e['grade']] ?? 0.0).reduce((a, b) => a + b);
     final avg = totalPoints / results.length;
 
     String closestGrade = grades.first;
@@ -54,6 +56,7 @@ class _ResultPageState extends State<ResultPage> {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     final screenWidth = MediaQuery.of(context).size.width;
+    final isBn = loc.localeName == 'bn';
 
     return Scaffold(
       appBar: AppBar(
@@ -75,9 +78,9 @@ class _ResultPageState extends State<ResultPage> {
                 Expanded(
                   child: DropdownButtonFormField<String>(
                     value: selectedExam,
-                    decoration: const InputDecoration(
-                      labelText: 'পরীক্ষার নাম',
-                      border: OutlineInputBorder(
+                    decoration: InputDecoration(
+                      labelText: loc.examName,
+                      border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                     ),
@@ -101,9 +104,9 @@ class _ResultPageState extends State<ResultPage> {
                     }
                   },
                   icon: const Icon(Icons.search, color: Colors.white),
-                  label: const Text(
-                    'অনুসন্ধান করুন',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  label: Text(
+                    loc.search,
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.teal,
@@ -116,20 +119,19 @@ class _ResultPageState extends State<ResultPage> {
                     shadowColor: Colors.black45,
                   ),
                 ),
-
               ],
             ),
 
             const SizedBox(height: 10),
 
-            if (showTable) Expanded(child: _buildTable(context, screenWidth)),
+            if (showTable) Expanded(child: _buildTable(context, screenWidth, loc, isBn)),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildTable(BuildContext context, double screenWidth) {
+  Widget _buildTable(BuildContext context, double screenWidth, AppLocalizations loc, bool isBn) {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Table(
@@ -145,23 +147,11 @@ class _ResultPageState extends State<ResultPage> {
           // Header Row
           TableRow(
             decoration: BoxDecoration(color: Colors.teal[200]),
-            children: const [
-              Padding(
-                padding: EdgeInsets.all(8),
-                child: Text('No.', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8),
-                child: Text('বিষয়', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8),
-                child: Text('প্রাপ্ত নম্বর', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8),
-                child: Text('গ্রেড', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
-              ),
+            children: [
+              _tableHeaderCell('No.'),
+              _tableHeaderCell(loc.subject),
+              _tableHeaderCell(loc.marksObtained),
+              _tableHeaderCell(loc.grade),
             ],
           ),
 
@@ -171,43 +161,36 @@ class _ResultPageState extends State<ResultPage> {
             final data = entry.value;
 
             return TableRow(children: [
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Text('$index', textAlign: TextAlign.center),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Text(data['subject'], textAlign: TextAlign.center),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Text('${data['marks']}', textAlign: TextAlign.center),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Text(data['grade'], textAlign: TextAlign.center),
-              ),
+              _tableCell('$index'),
+              _tableCell(isBn ? data['subject_bn'] : data['subject']),
+              _tableCell('${data['marks']}'),
+              _tableCell(data['grade']),
             ]);
           }).toList(),
 
           // Summary Row
           TableRow(children: [
-            const Padding(
-              padding: EdgeInsets.all(8),
-              child: Text('মোট', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)),
-            ),
-            const Padding(padding: EdgeInsets.all(8), child: Text('')),
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Text(averageMarks.toStringAsFixed(2), textAlign: TextAlign.center),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Text(averageGrade, textAlign: TextAlign.center),
-            ),
+            _tableHeaderCell(loc.total),
+            const SizedBox.shrink(),
+            _tableCell(averageMarks.toStringAsFixed(2)),
+            _tableCell(averageGrade),
           ]),
         ],
       ),
+    );
+  }
+
+  Widget _tableCell(String text) {
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Text(text, textAlign: TextAlign.center),
+    );
+  }
+
+  Widget _tableHeaderCell(String text) {
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Text(text, textAlign: TextAlign.center, style: const TextStyle(fontWeight: FontWeight.bold)),
     );
   }
 }

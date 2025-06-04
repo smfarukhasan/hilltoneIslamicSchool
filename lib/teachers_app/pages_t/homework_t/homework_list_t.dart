@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../l10n/app_localizations.dart';
+
 class HomeworkListT extends StatefulWidget {
   final List<Map<String, String>> homeworks;
   final void Function(int) onDelete;
@@ -46,6 +48,7 @@ class _HomeworkListTState extends State<HomeworkListT> {
   }
 
   void _openFilterDialog() {
+    final loc = AppLocalizations.of(context)!;
     String? tempClass = selectedClass;
     String? tempSection = selectedSection;
     String? tempSubject = selectedSubject;
@@ -62,22 +65,22 @@ class _HomeworkListTState extends State<HomeworkListT> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                  'ফিল্টার করুন',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green),
+                Text(
+                  loc.filter,
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green),
                 ),
                 const SizedBox(height: 20),
 
-                _buildDropdown('ক্লাস', tempClass, getUniqueValues('class'), (val) => tempClass = val),
+                _buildDropdown(loc.cclass, tempClass, getUniqueValues('class'), (val) => tempClass = val),
                 const SizedBox(height: 12),
 
-                _buildDropdown('সেকশন', tempSection, getUniqueValues('section'), (val) => tempSection = val),
+                _buildDropdown(loc.section, tempSection, getUniqueValues('section'), (val) => tempSection = val),
                 const SizedBox(height: 12),
 
-                _buildDropdown('বিষয়', tempSubject, getUniqueValues('subject'), (val) => tempSubject = val),
+                _buildDropdown(loc.subject, tempSubject, getUniqueValues('subject'), (val) => tempSubject = val),
                 const SizedBox(height: 12),
 
-                _buildDropdown('তারিখ', tempDate, getUniqueValues('date'), (val) => tempDate = val),
+                _buildDropdown(loc.date, tempDate, getUniqueValues('date'), (val) => tempDate = val),
                 const SizedBox(height: 24),
 
                 Row(
@@ -94,7 +97,7 @@ class _HomeworkListTState extends State<HomeworkListT> {
                         Navigator.of(context).pop();
                       },
                       icon: const Icon(Icons.refresh, color: Colors.red),
-                      label: const Text('রিসেট', style: TextStyle(color: Colors.red)),
+                      label: Text(loc.reset, style: const TextStyle(color: Colors.red)),
                     ),
                     ElevatedButton.icon(
                       onPressed: () {
@@ -107,7 +110,7 @@ class _HomeworkListTState extends State<HomeworkListT> {
                         Navigator.of(context).pop();
                       },
                       icon: const Icon(Icons.check_circle_outline),
-                      label: const Text('ফিল্টার প্রয়োগ'),
+                      label: Text(loc.filter),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green[300],
                         foregroundColor: Colors.white,
@@ -159,6 +162,7 @@ class _HomeworkListTState extends State<HomeworkListT> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Column(
       children: [
         // Search bar + Filter button
@@ -181,7 +185,7 @@ class _HomeworkListTState extends State<HomeworkListT> {
               onChanged: (value) => setState(() => searchText = value),
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                hintText: 'সার্চ করুন...',
+                hintText: loc.search,
                 hintStyle: TextStyle(color: Colors.teal[900]),
                 prefixIcon: Icon(Icons.search, color: Colors.teal[900]),
                 suffixIcon: IconButton(
@@ -197,7 +201,7 @@ class _HomeworkListTState extends State<HomeworkListT> {
         // List
         Expanded(
           child: filteredHomeworks.isEmpty
-              ? const Center(child: Text('কোন হোমওয়ার্ক পাওয়া যায়নি', style: TextStyle(fontSize: 16)))
+              ? Center(child: Text(loc.noHomeWork, style: const TextStyle(fontSize: 16)))
               : ListView.builder(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
             itemCount: filteredHomeworks.length,
@@ -212,6 +216,7 @@ class _HomeworkListTState extends State<HomeworkListT> {
   }
 
   Widget _buildHomeworkCard(Map<String, String> hw, int index) {
+    final loc = AppLocalizations.of(context)!;
     return Card(
       elevation: 3,
       margin: const EdgeInsets.symmetric(vertical: 8),
@@ -262,13 +267,13 @@ class _HomeworkListTState extends State<HomeworkListT> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('তারিখ: ${hw['date'] ?? ''}', style: const TextStyle(color: Colors.grey)),
+                Text('${loc.date}: ${hw['date'] ?? ''}', style: const TextStyle(color: Colors.grey)),
                 Row(
                   children: [
-                    _buildActionButton(Icons.edit_note, 'এডিট', Colors.blue,
+                    _buildActionButton(Icons.edit_note, loc.edit, Colors.blue,
                             () => widget.onEdit(widget.homeworks.indexOf(hw), hw)),
                     const SizedBox(width: 8),
-                    _buildActionButton(Icons.delete_forever, 'ডিলিট', Colors.red,
+                    _buildActionButton(Icons.delete_forever, loc.delete, Colors.red,
                             () => widget.onDelete(widget.homeworks.indexOf(hw))),
                   ],
                 )

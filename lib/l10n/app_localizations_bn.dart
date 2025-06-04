@@ -135,7 +135,37 @@ class AppLocalizationsBn extends AppLocalizations {
   String get noHomeWork => 'হোমওয়ার্ক পাওয়া যায়নি।';
 
   @override
+  String get hwList => 'হোমওয়ার্ক লিস্ট';
+
+  @override
+  String get hwSuccess => '✅ হোমওয়ার্ক সংরক্ষণ করা হয়েছে';
+
+  @override
+  String get hwWarning => '⚠️ অনুগ্রহ করে সঠিক ভাবে হোমওয়ার্ক প্রদান করুন';
+
+  @override
+  String get hwDate => 'তারিখ পরিবর্তন';
+
+  @override
+  String get classWork => 'ক্লাসওয়ার্ক';
+
+  @override
+  String get link => 'লিংক (ঐচ্ছিক)';
+
+  @override
   String get date => '📅 তারিখ';
+
+  @override
+  String get edit => 'এডিট';
+
+  @override
+  String get delete => 'ডিলিট';
+
+  @override
+  String get filter => 'ফিল্টার';
+
+  @override
+  String get reset => 'রিসেট';
 
   @override
   String get checkIn => '⏰ চেক ইন';
@@ -223,4 +253,71 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get reportSuccess => 'রিপোর্ট সফলভাবে জমা হয়েছে';
+
+  @override
+  String get enterOldPin => 'পুরাতন পিন লিখুন';
+
+  @override
+  String get enterNewPin => 'নতুন পিন লিখুন';
+
+  @override
+  String get reenterNewPin => 'আবার নতুন পিন লিখুন';
+
+  @override
+  String get oldPin => 'পুরাতন পিন';
+
+  @override
+  String get newPin => 'নতুন পিন';
+
+  @override
+  String get confirmPin => 'নতুন পিন নিশ্চিত করুন';
+
+  @override
+  String get pinMismatch => 'নতুন পিন মিলছে না';
+
+  @override
+  String get pinChangedSuccess => 'পিন সফলভাবে পরিবর্তন হয়েছে';
+
+  @override
+  String get marksSubmit => 'পরীক্ষার ফলাফল আপলোড করুন';
+
+  @override
+  String get examName => 'পরীক্ষার নাম';
+
+  @override
+  String get academicYear => 'শিক্ষাবর্ষ';
+
+  @override
+  String get section => 'সেকশন';
+
+  @override
+  String get search => 'অনুসন্ধান করুন';
+
+  @override
+  String get marksObtained => 'প্রাপ্ত নম্বর';
+
+  @override
+  String get enterMarks => 'নম্বর লিখুন';
+
+  @override
+  String get previousStudent => 'আগের শিক্ষার্থী';
+
+  @override
+  String get nextStudent => 'পরবর্তী শিক্ষার্থী';
+
+  @override
+  String get areYouSure => 'আপনি কি নিশ্চিত?';
+
+  @override
+  String get confirmSubmissionWarning =>
+      'আপনি কি নিশ্চিতভাবে সকল শিক্ষার্থীর নম্বর সাবমিট করতে চান?\n\nসাবমিট করলে এটি আর পরিবর্তন করা যাবে না। দয়া করে ভালোভাবে দেখে সাবমিট করুন।';
+
+  @override
+  String get marksSavedSuccessfully => 'নম্বর সফলভাবে সংরক্ষিত হয়েছে';
+
+  @override
+  String get grade => 'গ্রেড';
+
+  @override
+  String get total => 'মোট';
 }

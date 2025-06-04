@@ -48,8 +48,18 @@
 
   "hwAndCw": "Homework & Classwork",
   "noHomeWork": "No homework found on this date.",
+  "hwList": "HW List",
+  "hwSuccess": "✅ Homework saved successfully",
+  "hwWarning": "⚠️ Please provide homework correctly",
+  "hwDate": "Change Date",
+  "classWork": "Classwork",
+  "link": "Link (Optional)",
 
   "date": "📅 Date",
+  "edit": "Edit",
+  "delete": "Delete",
+  "filter": "Filter",
+  "reset": "Reset",
   "checkIn": "⏰ Check In",
   "checkOut": "⏳ Check Out",
 
@@ -82,5 +92,30 @@
   "titleRequired": "Please enter the title",
   "subjectRequired": "Please enter the subject",
   "detailsRequired": "Please enter the details",
-  "reportSuccess": "Report submitted successfully"
+  "reportSuccess": "Report submitted successfully",
+
+  "enterOldPin": "Enter Old PIN",
+  "enterNewPin": "Enter New PIN",
+  "reenterNewPin": "Re-enter New PIN",
+  "oldPin": "Old PIN",
+  "newPin": "New PIN",
+  "confirmPin": "Confirm PIN",
+  "pinMismatch": "New PINs do not match",
+  "pinChangedSuccess": "PIN changed successfully",
+
+
+  "marksSubmit": "Submit Exam Marks",
+  "examName": "Exam Name",
+  "academicYear": "Academic Year",
+  "section": "Section",
+  "search": "Search",
+  "marksObtained": "Marks",
+  "enterMarks": "Enter Marks",
+  "previousStudent": "Previous Student",
+  "nextStudent": "Next Student",
+  "areYouSure": "Are you sure?",
+  "confirmSubmissionWarning": "Are you sure you want to submit marks for all students?\n\nOnce submitted, you cannot change them. Please review before submitting.",
+  "marksSavedSuccessfully": "Marks saved successfully",
+  "grade": "Grade",
+  "total": "Total"
 }

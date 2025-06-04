@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
+import '../global_functions/snack_bar.dart';
 
 class ChangePinDialog extends StatefulWidget {
   const ChangePinDialog({super.key});
@@ -14,22 +15,19 @@ class _ChangePinDialogState extends State<ChangePinDialog> {
   final _confirmPinController = TextEditingController();
 
   void _savePin() {
+    final loc = AppLocalizations.of(context)!;
     // final oldPin = _oldPinController.text.trim();
     final newPin = _newPinController.text.trim();
     final confirmPin = _confirmPinController.text.trim();
 
     if (newPin != confirmPin) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('নতুন পিন মিলছে না')),
-      );
+      showGlobalSnackBar(context,loc.pinMismatch);
       return;
     }
 
     // এখানে পিন পরিবর্তনের লজিক বসাতে পারেন
     Navigator.pop(context);
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('পিন সফলভাবে পরিবর্তন হয়েছে')),
-    );
+    showGlobalSnackBar(context,loc.pinChangedSuccess);
   }
 
   @override
@@ -51,8 +49,8 @@ class _ChangePinDialogState extends State<ChangePinDialog> {
               controller: _oldPinController,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: 'পুরাতন পিন লিখুন',
-                hintText: 'Enter Old PIN',
+                labelText: loc.oldPin,
+                hintText: loc.enterOldPin,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
               textAlign: TextAlign.center,
@@ -62,8 +60,8 @@ class _ChangePinDialogState extends State<ChangePinDialog> {
               controller: _newPinController,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: 'নতুন পিন লিখুন',
-                hintText: 'Enter new PIN',
+                labelText: loc.newPin,
+                hintText: loc.enterNewPin,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
               textAlign: TextAlign.center,
@@ -73,8 +71,8 @@ class _ChangePinDialogState extends State<ChangePinDialog> {
               controller: _confirmPinController,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: 'আবার নতুন পিন লিখুন',
-                hintText: 'Re-enter new PIN',
+                labelText: loc.confirmPin,
+                hintText: loc.reenterNewPin,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
               textAlign: TextAlign.center,

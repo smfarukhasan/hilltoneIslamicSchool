@@ -38,8 +38,8 @@ class ResultPageT extends StatelessWidget {
                 animation: manager,
                 builder: (context, _) {
                   if (!manager.isFormSubmitted) {
-                    return const Center(
-                        child: Text('তথ্য দিন এবং সাবমিট করুন'));
+                    return Center(
+                        child: Text(loc.marksSubmit));
                   }
                   return ResultTable(manager: manager);
                 },

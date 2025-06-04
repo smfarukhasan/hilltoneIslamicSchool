@@ -135,7 +135,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noHomeWork => 'No homework found on this date.';
 
   @override
+  String get hwList => 'HW List';
+
+  @override
+  String get hwSuccess => '✅ Homework saved successfully';
+
+  @override
+  String get hwWarning => '⚠️ Please provide homework correctly';
+
+  @override
+  String get hwDate => 'Change Date';
+
+  @override
+  String get classWork => 'Classwork';
+
+  @override
+  String get link => 'Link (Optional)';
+
+  @override
   String get date => '📅 Date';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get filter => 'Filter';
+
+  @override
+  String get reset => 'Reset';
 
   @override
   String get checkIn => '⏰ Check In';
@@ -223,4 +253,71 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reportSuccess => 'Report submitted successfully';
+
+  @override
+  String get enterOldPin => 'Enter Old PIN';
+
+  @override
+  String get enterNewPin => 'Enter New PIN';
+
+  @override
+  String get reenterNewPin => 'Re-enter New PIN';
+
+  @override
+  String get oldPin => 'Old PIN';
+
+  @override
+  String get newPin => 'New PIN';
+
+  @override
+  String get confirmPin => 'Confirm PIN';
+
+  @override
+  String get pinMismatch => 'New PINs do not match';
+
+  @override
+  String get pinChangedSuccess => 'PIN changed successfully';
+
+  @override
+  String get marksSubmit => 'Submit Exam Marks';
+
+  @override
+  String get examName => 'Exam Name';
+
+  @override
+  String get academicYear => 'Academic Year';
+
+  @override
+  String get section => 'Section';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get marksObtained => 'Marks';
+
+  @override
+  String get enterMarks => 'Enter Marks';
+
+  @override
+  String get previousStudent => 'Previous Student';
+
+  @override
+  String get nextStudent => 'Next Student';
+
+  @override
+  String get areYouSure => 'Are you sure?';
+
+  @override
+  String get confirmSubmissionWarning =>
+      'Are you sure you want to submit marks for all students?\n\nOnce submitted, you cannot change them. Please review before submitting.';
+
+  @override
+  String get marksSavedSuccessfully => 'Marks saved successfully';
+
+  @override
+  String get grade => 'Grade';
+
+  @override
+  String get total => 'Total';
 }

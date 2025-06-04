@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../../global_functions/snack_bar.dart';
+import '../../../l10n/app_localizations.dart';
 
 class HomeworkFormT extends StatefulWidget {
   final Function(Map<String, String>) onSave;
@@ -54,6 +56,7 @@ class _HomeworkFormTState extends State<HomeworkFormT> {
 
   void _handleSave() {
     FocusScope.of(context).unfocus();
+    final loc = AppLocalizations.of(context)!;
 
     if (selectedClass != null &&
         selectedSection != null &&
@@ -69,9 +72,7 @@ class _HomeworkFormTState extends State<HomeworkFormT> {
         'date': DateFormat('yyyy-MM-dd').format(selectedDate),
       };
       widget.onSave(data);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('✅ হোমওয়ার্ক সংরক্ষণ করা হয়েছে')),
-      );
+      showGlobalSnackBar(context,loc.hwSuccess);
 
       // সব ক্লিয়ার করা
       setState(() {
@@ -84,14 +85,13 @@ class _HomeworkFormTState extends State<HomeworkFormT> {
         selectedDate = DateTime.now();
       });
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('⚠️ অনুগ্রহ করে সব বাধ্যতামূলক ফিল্ড পূরণ করুন')),
-      );
+      showGlobalSnackBar(context,loc.hwWarning);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
 
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -152,7 +152,7 @@ class _HomeworkFormTState extends State<HomeworkFormT> {
                       },
                       icon: Icon(Icons.edit_calendar_outlined, color: Colors.green.shade700),
                       label: Text(
-                        'তারিখ পরিবর্তন',
+                        loc.hwDate,
                         style: TextStyle(
                           color: Colors.green.shade700,
                           fontWeight: FontWeight.w500,
@@ -186,7 +186,7 @@ class _HomeworkFormTState extends State<HomeworkFormT> {
                             groupValue: type,
                             activeColor: Colors.green,
                             contentPadding: EdgeInsets.zero,
-                            title: const Text('হোমওয়ার্ক'),
+                            title: Text(loc.homework),
                             onChanged: (val) => setState(() => type = val!),
                           ),
                         ),
@@ -196,7 +196,7 @@ class _HomeworkFormTState extends State<HomeworkFormT> {
                             groupValue: type,
                             activeColor: Colors.green,
                             contentPadding: EdgeInsets.zero,
-                            title: const Text('ক্লাসওয়ার্ক'),
+                            title: Text(loc.classWork),
                             onChanged: (val) => setState(() => type = val!),
                           ),
                         ),
@@ -207,7 +207,7 @@ class _HomeworkFormTState extends State<HomeworkFormT> {
               ),
               const SizedBox(height: 10),
               _buildDropdown(
-                label: 'ক্লাস',
+                label: loc.cclass,
                 value: selectedClass,
                 items: classes,
                 onChanged: (val) {
@@ -221,7 +221,7 @@ class _HomeworkFormTState extends State<HomeworkFormT> {
               const SizedBox(height: 10),
               if (selectedClass != null)
                 _buildDropdown(
-                  label: 'সেকশন *',
+                  label: loc.section,
                   value: selectedSection,
                   items: sections[selectedClass]!,
                   onChanged: (val) => setState(() => selectedSection = val),
@@ -229,31 +229,31 @@ class _HomeworkFormTState extends State<HomeworkFormT> {
               const SizedBox(height: 10),
               if (selectedClass != null && selectedSection != null)
                 _buildDropdown(
-                  label: 'বিষয় *',
+                  label: loc.subject,
                   value: selectedSubject,
                   items: subjects[selectedClass]!,
                   onChanged: (val) => setState(() => selectedSubject = val),
                 ),
               const SizedBox(height: 10),
-              _buildTextField(controller: description, label: 'বিবরণ *', maxLines: 3),
+              _buildTextField(controller: description, label: loc.description, maxLines: 3),
               const SizedBox(height: 10),
-              _buildTextField(controller: link, label: 'লিঙ্ক (ঐচ্ছিক)'),
+              _buildTextField(controller: link, label: loc.link),
               const SizedBox(height: 15),
               SizedBox(
                 width: double.infinity,
                 child: FilledButton.icon(
                   onPressed: _handleSave,
                   style: FilledButton.styleFrom(
-                    backgroundColor: Colors.green, // ✅ সবুজ ব্যাকগ্রাউন্ড
+                    backgroundColor: Colors.green,
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                   icon: const Icon(Icons.save, color: Colors.white),
-                  label: const Text(
-                    'সেভ করুন',
-                    style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                  label: Text(
+                    loc.save,
+                    style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
               )

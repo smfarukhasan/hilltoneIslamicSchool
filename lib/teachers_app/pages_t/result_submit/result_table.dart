@@ -22,18 +22,18 @@ class ResultTable extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-               Text(
-                  loc.schoolName,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.045,
-                    fontWeight: FontWeight.bold,
-                  ),
+              Text(
+                loc.schoolName,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: screenWidth * 0.045,
+                  fontWeight: FontWeight.bold,
                 ),
+              ),
               const SizedBox(height: 10),
-              _buildHeaderInfo(screenWidth),
+              _buildHeaderInfo(screenWidth, loc),
               const SizedBox(height: 10),
-              _buildTableHeader(),
+              _buildTableHeader(loc),
               const SizedBox(height: 6),
               ...manager.studentList.asMap().entries.map((entry) {
                 final index = entry.key;
@@ -74,7 +74,7 @@ class ResultTable extends StatelessWidget {
     );
   }
 
-  Widget _buildHeaderInfo(double screenWidth) {
+  Widget _buildHeaderInfo(double screenWidth, AppLocalizations loc) {
     TextStyle infoStyle = TextStyle(fontSize: screenWidth * 0.038);
 
     return Container(
@@ -88,17 +88,17 @@ class ResultTable extends StatelessWidget {
         spacing: 20,
         runSpacing: 8,
         children: [
-          Text('শিক্ষাবর্ষ: ${manager.selectedSession ?? ''}', style: infoStyle),
-          Text('পরীক্ষা: ${manager.selectedExam ?? ''}', style: infoStyle),
-          Text('ক্লাস: ${manager.selectedClass ?? ''}', style: infoStyle),
-          Text('সেকশন: ${manager.selectedSection ?? ''}', style: infoStyle),
-          Text('বিষয়: ${manager.selectedSubject ?? ''}', style: infoStyle),
+          Text('${loc.academicYear}: ${manager.selectedSession ?? ''}', style: infoStyle),
+          Text('${loc.examName}: ${manager.selectedExam ?? ''}', style: infoStyle),
+          Text('${loc.cclass}: ${manager.selectedClass ?? ''}', style: infoStyle),
+          Text('${loc.section}: ${manager.selectedSection ?? ''}', style: infoStyle),
+          Text('${loc.subject}: ${manager.selectedSubject ?? ''}', style: infoStyle),
         ],
       ),
     );
   }
 
-  Widget _buildTableHeader() {
+  Widget _buildTableHeader(AppLocalizations loc) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       decoration: BoxDecoration(
@@ -106,14 +106,14 @@ class ResultTable extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: Colors.green.shade300),
       ),
-      child: const Row(
+      child: Row(
         children: [
-          Expanded(flex: 1, child: Text('No.', style: TextStyle(fontWeight: FontWeight.bold))),
-          Expanded(flex: 2, child: Text('আইডি', style: TextStyle(fontWeight: FontWeight.bold))),
-          Expanded(flex: 4, child: Text('নাম', style: TextStyle(fontWeight: FontWeight.bold))),
-          Expanded(flex: 2, child: Text('প্রাপ্ত নম্বর', style: TextStyle(fontWeight: FontWeight.bold))),
+          const Expanded(flex: 1, child: Text('No.', style: TextStyle(fontWeight: FontWeight.bold))),
+          Expanded(flex: 2, child: Text(loc.id, style: const TextStyle(fontWeight: FontWeight.bold))),
+          Expanded(flex: 4, child: Text(loc.name, style: const TextStyle(fontWeight: FontWeight.bold))),
+          Expanded(flex: 2, child: Text(loc.marksObtained, style: const TextStyle(fontWeight: FontWeight.bold))),
         ],
-      )
+      ),
     );
   }
 }

@@ -46,7 +46,7 @@ class _HomeworkPageTState extends State<HomeworkPageT> with TickerProviderStateM
         // নতুন
         homeworkList.insert(0, data);
       }
-      _tabController.animateTo(1); // ফর্ম শেষে লিস্টে ফিরো
+      _tabController.animateTo(1);
     });
   }
 
@@ -87,7 +87,7 @@ class _HomeworkPageTState extends State<HomeworkPageT> with TickerProviderStateM
                 unselectedLabelColor: theme.textTheme.bodyMedium?.color,
                 tabs: [
                   Tab(text: loc.homework),
-                  const Tab(text: "HW List"),
+                  Tab(text: loc.hwList),
                 ],
               ),
             ),

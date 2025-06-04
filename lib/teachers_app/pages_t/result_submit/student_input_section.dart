@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../global_functions/snack_bar.dart';
 import '../../../l10n/app_localizations.dart';
 import 'state_manager.dart';
 
@@ -44,16 +45,16 @@ class _StudentInputSectionState extends State<StudentInputSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('  নাম: ${student.name}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        Text('  আইডি: ${student.id}', style: const TextStyle(fontSize: 16)),
+        Text('  ${loc.name}: ${student.name}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text('  ${loc.id}: ${student.id}', style: const TextStyle(fontSize: 16)),
         const SizedBox(height: 10),
         TextField(
           controller: marksController,
           keyboardType: TextInputType.number,
           enabled: !manager.isInputLocked,
           decoration: InputDecoration(
-            labelText: 'প্রাপ্ত নম্বর',
-            hintText: 'নম্বর লিখুন',
+            labelText: loc.enterMarks,
+            hintText: loc.enterMarks,
             prefixIcon: const Icon(Icons.edit),
             filled: true,
             fillColor: manager.isInputLocked ? Colors.grey[200] : Colors.white,
@@ -72,7 +73,7 @@ class _StudentInputSectionState extends State<StudentInputSection> {
               child: ElevatedButton.icon(
                 onPressed: manager.currentStudentIndex > 0 ? manager.previousStudent : null,
                 icon: const Icon(Icons.arrow_back),
-                label: const Text('আগের শিক্ষার্থী'),
+                label: Text(loc.previousStudent),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -86,7 +87,7 @@ class _StudentInputSectionState extends State<StudentInputSection> {
                     ? manager.nextStudent
                     : null,
                 icon: const Icon(Icons.arrow_forward),
-                label: const Text('পরবর্তী শিক্ষার্থী'),
+                label: Text(loc.nextStudent),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -119,6 +120,7 @@ class _StudentInputSectionState extends State<StudentInputSection> {
   }
 
   void _showConfirmationDialog(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) {
@@ -133,16 +135,15 @@ class _StudentInputSectionState extends State<StudentInputSection> {
                   children: [
                     const Icon(Icons.warning_amber_rounded, size: 60, color: Colors.red),
                     const SizedBox(height: 16),
-                    const Text(
-                      'আপনি কি নিশ্চিত?',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    Text(
+                      loc.areYouSure,
+                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 12),
-                    const Text(
-                      'আপনি কি নিশ্চিতভাবে সকল শিক্ষার্থীর নম্বর সাবমিট করতে চান?\n\n'
-                          'সাবমিট করলে এটি আর পরিবর্তন করা যাবে না। তাই "না" বাটনে ক্লিক করে ভালো ভাবে দেখে সাবমিট করুন।',
+                    Text(
+                      loc.confirmSubmissionWarning,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.black87),
+                      style: const TextStyle(fontSize: 16, color: Colors.black87),
                     ),
                     const SizedBox(height: 20),
                     Row(
@@ -153,9 +154,7 @@ class _StudentInputSectionState extends State<StudentInputSection> {
                               Navigator.of(context).pop();
                               widget.manager.updateMarks(marksController.text);
                               widget.manager.lockInput();
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('নম্বর সফলভাবে সংরক্ষিত হয়েছে')),
-                              );
+                              showGlobalSnackBar(context,loc.marksSavedSuccessfully);
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.green,
@@ -164,7 +163,7 @@ class _StudentInputSectionState extends State<StudentInputSection> {
                                   borderRadius: BorderRadius.circular(12)),
                               padding: const EdgeInsets.symmetric(vertical: 12),
                             ),
-                            child: const Text('হ্যাঁ, সাবমিট করুন'),
+                            child: Text(loc.submit),
                           ),
                         ),
                         const SizedBox(width: 10),
@@ -178,7 +177,7 @@ class _StudentInputSectionState extends State<StudentInputSection> {
                                   borderRadius: BorderRadius.circular(12)),
                               padding: const EdgeInsets.symmetric(vertical: 12),
                             ),
-                            child: const Text('না'),
+                            child: Text(loc.cancel),
                           ),
                         ),
                       ],

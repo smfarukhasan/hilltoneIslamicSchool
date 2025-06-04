@@ -62,7 +62,8 @@ import 'app_localizations_en.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -70,7 +71,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,7 +84,8 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -347,11 +350,71 @@ abstract class AppLocalizations {
   /// **'No homework found on this date.'**
   String get noHomeWork;
 
+  /// No description provided for @hwList.
+  ///
+  /// In en, this message translates to:
+  /// **'HW List'**
+  String get hwList;
+
+  /// No description provided for @hwSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'✅ Homework saved successfully'**
+  String get hwSuccess;
+
+  /// No description provided for @hwWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'⚠️ Please provide homework correctly'**
+  String get hwWarning;
+
+  /// No description provided for @hwDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Date'**
+  String get hwDate;
+
+  /// No description provided for @classWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Classwork'**
+  String get classWork;
+
+  /// No description provided for @link.
+  ///
+  /// In en, this message translates to:
+  /// **'Link (Optional)'**
+  String get link;
+
   /// No description provided for @date.
   ///
   /// In en, this message translates to:
   /// **'📅 Date'**
   String get date;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @filter.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filter;
+
+  /// No description provided for @reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get reset;
 
   /// No description provided for @checkIn.
   ///
@@ -526,9 +589,142 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Report submitted successfully'**
   String get reportSuccess;
+
+  /// No description provided for @enterOldPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Old PIN'**
+  String get enterOldPin;
+
+  /// No description provided for @enterNewPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter New PIN'**
+  String get enterNewPin;
+
+  /// No description provided for @reenterNewPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-enter New PIN'**
+  String get reenterNewPin;
+
+  /// No description provided for @oldPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Old PIN'**
+  String get oldPin;
+
+  /// No description provided for @newPin.
+  ///
+  /// In en, this message translates to:
+  /// **'New PIN'**
+  String get newPin;
+
+  /// No description provided for @confirmPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm PIN'**
+  String get confirmPin;
+
+  /// No description provided for @pinMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'New PINs do not match'**
+  String get pinMismatch;
+
+  /// No description provided for @pinChangedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'PIN changed successfully'**
+  String get pinChangedSuccess;
+
+  /// No description provided for @marksSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Exam Marks'**
+  String get marksSubmit;
+
+  /// No description provided for @examName.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam Name'**
+  String get examName;
+
+  /// No description provided for @academicYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic Year'**
+  String get academicYear;
+
+  /// No description provided for @section.
+  ///
+  /// In en, this message translates to:
+  /// **'Section'**
+  String get section;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @marksObtained.
+  ///
+  /// In en, this message translates to:
+  /// **'Marks'**
+  String get marksObtained;
+
+  /// No description provided for @enterMarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Marks'**
+  String get enterMarks;
+
+  /// No description provided for @previousStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous Student'**
+  String get previousStudent;
+
+  /// No description provided for @nextStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Student'**
+  String get nextStudent;
+
+  /// No description provided for @areYouSure.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure?'**
+  String get areYouSure;
+
+  /// No description provided for @confirmSubmissionWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to submit marks for all students?\n\nOnce submitted, you cannot change them. Please review before submitting.'**
+  String get confirmSubmissionWarning;
+
+  /// No description provided for @marksSavedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Marks saved successfully'**
+  String get marksSavedSuccessfully;
+
+  /// No description provided for @grade.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade'**
+  String get grade;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -537,25 +733,25 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['bn', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['bn', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'bn': return AppLocalizationsBn();
-    case 'en': return AppLocalizationsEn();
+    case 'bn':
+      return AppLocalizationsBn();
+    case 'en':
+      return AppLocalizationsEn();
   }
 
   throw FlutterError(
-    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

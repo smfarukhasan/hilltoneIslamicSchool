@@ -13,22 +13,20 @@ class _ProfilePageState extends State<ProfilePage> {
   final List<String> nonEditableFields = ['name', 'id', 'cclass', 'version'];
 
   Map<String, String> infoMap = {
-    "name": "মোঃ কামাল হোসেন",
-    "id": "STU-2023-101",
-    "cclass": "দশম",
-    "version": "বাংলা",
+    "name": "S. M. Faruk Hasan",
+    "id": "STU-2025-101",
+    "cclass": "5",
+    "version": "English",
     "phone": "01XXXXXXXXX",
-    "email": "kamal.hossain@example.com",
-    "gender": "পুরুষ",
-    "birth_cert": "2005-01-15",
+    "email": "farukhasan@gmail.com",
+    "gender": "Male",
+    "birth_cert": "1994-08-01",
     "blood_group": "O+",
-    "current_address":
-        "গ্রাম: উত্তর পাড়া,\nডাকঘর: ---,\nউপজেলা: ---,\nজেলা: ---",
-    "permanent_address":
-        "গ্রাম: দক্ষিণ পাড়া,\nডাকঘর: ---,\nউপজেলা: ---,\nজেলা: ---",
-    "father_name": "আলী হোসেন",
+    "current_address": "Balashpur",
+    "permanent_address": "Balashpur",
+    "father_name": "Md. Nasir",
     "father_phone": "01YYYYYYYYY",
-    "mother_name": "ফাতেমা বেগম",
+    "mother_name": "Ferdausi",
     "mother_phone": "01ZZZZZZZZZ",
   };
 

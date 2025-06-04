@@ -38,8 +38,8 @@ class _AttendancePageState extends State<AttendancePage> {
       firstDate: DateTime(2020),
       lastDate: DateTime(2030),
       initialDatePickerMode: DatePickerMode.year,
-      helpText: 'মাস ও বছর নির্বাচন করুন',
-      fieldHintText: 'মাস/বছর',
+      helpText: 'Select Year and Month',
+      fieldHintText: 'Month and Year',
     );
 
     if (picked != null) {

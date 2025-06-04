@@ -107,7 +107,7 @@ class _LogoutSheetContentState extends State<LogoutSheetContent> {
               onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.cancel_outlined),
               label: Text(
-                AppLocalizations.of(context)!.cancel, // লোকালাইজড টেক্সট
+                AppLocalizations.of(context)!.cancel,
                 style: const TextStyle(fontSize: 16),
               ),
               style: TextButton.styleFrom(
